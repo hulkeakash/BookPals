@@ -1,24 +1,21 @@
 package com.bookpals.mapper;
 
+import com.bookpals.dto.UserDto;
+import com.bookpals.entity.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
-import com.bookpals.dto.UserDto;
-import com.bookpals.entity.User;
-
-@Mapper(componentModel = "spring", uses = {BookMapper.class})
+@Mapper
 public interface UserMapper {
 
     UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
 
-    @Mapping(source = "currentlyReading", target = "currentlyReading")
-    @Mapping(source = "alreadyReadBooks", target = "alreadyReadBooks")
-    UserDto toUserDto(User user);
+    @Mapping(source = "booksRead", target = "booksRead")
+    UserDto toDto(User user);
 
-    @Mapping(source = "currentlyReading", target = "currentlyReading")
-    @Mapping(source = "alreadyReadBooks", target = "alreadyReadBooks")
-    User toUser(UserDto userDto);
+    @Mapping(source = "booksRead", target = "booksRead")
+    User toEntity(UserDto userDto);
 }
 
 /*

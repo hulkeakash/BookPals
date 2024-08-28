@@ -14,7 +14,4 @@ public class BookServiceImpl {
 	@Autowired
 	private BookRepository bookRepository;
 	
-	public List<Book> findUsersByBookName(String bookName){
-		return bookRepository.findByBookName(bookName);
-	}
 }

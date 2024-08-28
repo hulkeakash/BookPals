@@ -9,5 +9,5 @@ public interface UserService {
 	public List<UserDto> getAllUsers();
 	public UserDto getUserById(Long id);
 	public String deleteUserById(Long id);
-
+	public List<UserDto> getUsersReadingSameBook(String bookName);
 }
