@@ -23,9 +23,14 @@ public class UserController {
 	@Autowired
 	private UserServiceImpl userServiceImpl;
 	
-	@PostMapping("/addUser")
+	@PostMapping("/signup")
 	public ResponseEntity<String> addNewUser(@RequestBody UserDto userDto){
 		return ResponseEntity.status(HttpStatus.CREATED).body(userServiceImpl.addNewUser(userDto));
+	}
+	
+	@GetMapping("/signin")
+	public ResponseEntity<String> getUserByEmail(@RequestBody UserDto userDto){
+		return ResponseEntity.status(HttpStatus.OK).body(userServiceImpl.getUserByEmailId(userDto));
 	}
 	
 	@GetMapping("/sameBookReader/{bookName}")
@@ -37,5 +42,4 @@ public class UserController {
 			return ResponseEntity.of(Optional.of(userDtoList));
 		}
 	}
-
 }
